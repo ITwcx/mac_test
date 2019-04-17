@@ -1,0 +1,459 @@
+@charset "utf-8";
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,fieldset,lengend,button,input,textarea,th,td {margin:0;padding:0;font-family:PingFangSC,Helvetica;}
+a {text-decoration:none;color: #000}
+a:hover {text-decoration:none;}
+a:active{text-decoration: none;}
+ul,ol {list-style:none;}
+a,img,input,div {-webkit-tap-highlight-color:rgba(255,255,255,0);}
+.hidden {display:none !important;}
+.show{display:block !important;}
+.bold{font-weight: 600}
+@media screen and (min-width:1024px){html{font-size:20px;}}
+@media screen and (max-width:800px){html{font-size:18px;}}
+@media screen and (max-width:414px){html{font-size:17px;}}
+@media screen and (max-width:375px){html{font-size:15px;}}
+@media screen and (max-width:360px){html{font-size:14px;}}
+@media screen and (max-width:320px){html{font-size:12px;}}
+* {
+ -webkit-touch-callout:none;
+ -moz-touch-callout:none;
+ -ms-touch-callout:none;
+ touch-callout:none;
+ }
+
+ .date{
+     width: 100%;
+
+ }
+
+ .dateHead{
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    align-items: center;
+ }
+ .month{
+     margin: 32px;
+ }
+ .month p{
+    color:#eb6b00;
+    font-weight: 700;     
+ }
+.button{
+     border: 1px solid #000;
+     border-radius: 10px;
+     color: #000;
+     padding:0px 10px;
+     text-align: center;
+     position: relative;
+     top: 1px;
+     
+ }
+
+
+ .button span{
+     text-align: center;
+
+ }
+.home{
+    width: 100%;
+}
+
+.datebody{
+    padding:10px 20px;
+    background-color: #f3f3f3;
+}
+ .thead {
+    width: 100%;
+    appearance: none;
+    background-color: #fff;
+
+}
+
+.thead li {
+    float: left;
+    width: 14.28%;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+
+.dateBody{
+    width: 100%;
+    background-color: #f3f3f3;
+}
+
+
+
+.dateBody>tr>td {
+    width: 14.28%;
+    height: 40px;
+    text-align: center;
+    position: relative;
+    padding: 2px;
+    background-color: #fff;
+
+}
+
+.haveClass{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    bottom: 3px;
+    left: 50%;
+    margin-left: -5px;;
+    background-color: #eb6b00;
+    border-radius: 50%;
+    
+}
+
+#month {
+    text-align: center;
+}
+
+.sectionDesc{
+    width: 100%;
+    border-bottom: 10px solid #f3f3f3;
+}
+
+.sectionDesc:last-of-type{
+    border:none;
+}
+
+.sectionDesc>ul {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /*border-bottom: 2px dashed #ccc;*/
+}
+
+.sectionDesc>ul>li {
+    display: flex;
+    align-content: center;
+    width: 85%;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    padding: 10px 0;
+    margin: 0 15px;
+
+    
+}
+
+.sectionDesc>ul>.subject {
+    border-bottom: 1px solid #ccc;
+    font-size: 1rem;
+    padding: 20px 0 10px 0;
+    margin-bottom: 10px;
+    /*background-color: #eee;*/
+    font-weight: bold;
+}
+
+.sectionDesc>ul>li>img {
+    width: 15px;
+    height: 1rem;
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+.sectionDesc>ul>li>span {
+    margin-right: 8px;
+}
+
+.sectionDesc>ul>.statu {
+    position: absolute;
+    top: 55%;
+    margin-top: -40px;
+    right: 30px;
+}
+
+.sectionDesc>ul>.statu>img {
+    width: 80px;
+    height: 80px;
+}
+
+.chooseButton{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    top: 50%;
+    margin-top: -5px;;
+    right: 40px;
+}
+
+.chooseToLeave
+{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    padding: 2px;
+    border-radius: 50%;
+    border: 1px solid #eb6b00;
+    background-color: #eb6b00;
+    background-clip: content-box;
+    top: 50%;
+    margin-top: -5px;;
+    right: 40px;
+}
+
+.submitButton{
+    display: block;
+    width: 80%;
+    border-radius: 5px;
+    background-color: #eb6b00;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    padding: 8px;
+    margin: 20px auto;
+}
+
+.leaveMask{
+    display: none;
+    background-color:rgba(0,0,0,.8);
+    width: 100%;
+    min-height: 170vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+}
+
+.leavePannel{
+    width: 80%;
+    min-height: 300px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin:100px auto;
+    padding-bottom: 10px;
+}
+
+.border-style{
+    border: 1px solid #000;
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+    padding:10px;
+}
+.leaveTitle{
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.leaveReason{
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 125px; 
+   
+}
+
+
+.submit{
+    display: block;
+    width: 30%;
+    background-color: #eb6b00;
+    color: #fff;
+    font-size: 700;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 20px auto;
+}
+
+.chooseToGrey{
+    background-color: orange !important;
+}
+
+.today{
+    background-color: #FF9966 !important;
+    color:#fff;
+}
+
+.DIS_TK_Mask
+{
+    float: right;
+    padding-right: 10px;
+    padding-top: 10px;
+    color:#666;
+    cursor: pointer;
+}
+
+.EmptyClassSpan
+{
+    text-align: center;
+    line-height: 220px;
+    font-size: 16px;
+    color:#aaa;
+}
+
+.TK_CourseTimeDiv
+{
+    margin-top: 10px;
+    color:#bbb;
+    line-height: 20px;
+    font-size: 14px;
+    text-align: center;
+
+}
+
+.leaveTitle
+{
+    padding: 20px;
+    text-align: center;
+}
+
+/* 6.19 新增 */
+.line{
+    width: 100%;
+    height: 30px;
+    display: block;
+    margin-top: 10px;
+}
+
+.toSee{
+    float: right;
+    display: block;
+    margin-left: 10px;;
+    margin-right: 20px; 
+}
+.toSee img{
+    width: 15px;
+    height: 15px;
+}
+.toSee a{
+    color: #eb6b00;
+    /* text-decoration: underline; */
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+
+.section{
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #dadada;
+    flex: 1;
+    margin-top: 10px;;
+    margin-bottom: 10px;;
+}
+
+
+.section ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    
+}
+
+
+.section ul li{
+    width: 100%;
+    font-size: 1rem;
+    line-height: 40px;
+    border-bottom: 2px dotted #dadada;
+    position: relative;
+    background-color: #fff;
+}
+
+.section ul li:last-child{
+    border: none;
+}
+
+.section-head{
+    position: absolute;
+    top: 0;
+    left: 0;;
+    width: 100%;
+    height: 20px;
+    background-color: #eb6b00;
+}
+
+.section ul li a{
+   
+    display: block;
+    width: 100%;
+    
+}
+
+.section-left{
+    float: left;
+    width: 30%;
+}
+
+.section-left>img{
+    width: 20px;
+    height: 20px;
+
+}
+.section-center{
+    width: 70%;
+    float: left;
+    position: relative;
+}
+
+.section-center span{
+    margin-left: 5px;;
+}
+
+.section-center select{
+    width: 100%;
+    font-size: 1rem;
+    appearance: none;
+    -moz-appearance:none;
+-webkit-appearance:none;
+    border: none;
+    outline: none;
+}
+
+.section-right{
+    float: left;
+    width: 9%;
+}
+
+span>em{
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid #dadada;
+    border-right: 1px solid #dadada;
+    transform: rotateZ(45deg);
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    right: 15px;
+}
+
+.section-leaveReason{
+    width: 100%;
+   
+}
+
+/* 6.19 新增结束 */
+
+
+/* 6.20 新增 */
+.disabled{
+    background-color: #dadada !important;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* 6.20 新增结束 */

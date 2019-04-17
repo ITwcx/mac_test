@@ -1,0 +1,695 @@
+
+<link href="__PUBLIC__/src/bootstrap_time/css/bootstrap-datetimepicker.css" rel="stylesheet">
+<link href="__PUBLIC__/src/bootstrap_time/css/font-awesome.min.css" rel="stylesheet">
+<!-- <link href="__PUBLIC__/src/bootstrap_time/css/bootstrap.min.css"     rel="stylesheet" type="text/css" media="screen" /> -->
+
+<link href="__PUBLIC__/src/bootstrap_time/css/animate.min.css" rel="stylesheet">
+<link href="__PUBLIC__/src/bootstrap_time/css/prettify-1.0.css" rel="stylesheet">
+<link href="__PUBLIC__/src/bootstrap_time/css/base.css" rel="stylesheet">
+<link href="__PUBLIC__/src/bootstrap_time/css/default.css"  rel="stylesheet" type="text/css" >
+
+<!-- <script src="__PUBLIC__/src/bootstrap_time/js/bootstrap.min.js"   type="text/javascript" ></script> -->
+<script src="__PUBLIC__/src/bootstrap_time/js/moment-with-locales.js"></script>
+<script src="__PUBLIC__/src/bootstrap_time/js/bootstrap-datetimepicker.js"></script>
+
+
+
+<style>
+	.bootstrap-datetimepicker-widget
+	{
+
+	}
+	.event_modal_content
+	{
+		min-height: 300px;
+
+		background-color: #eee;
+	}
+	.Event_table
+	{
+		width: 96%;
+		margin: 0 auto;
+		min-height: 50px;
+		text-align: center;
+		line-height: 35px;
+		margin-bottom: 60px;
+	}
+	.form-control
+	{
+		margin-bottom: 0px;
+		height: 40px;
+		color:black;
+	}
+	.Event_table thead th
+	{
+		text-align: center;
+	}
+
+	.Event_table thead tr th:nth-child(1)
+	{
+		width: 20%;
+	}
+
+	.Event_table thead tr th:nth-child(2)
+	{
+		width: 20%;
+	}
+
+	.Event_table thead tr th:nth-child(3)
+	{
+		width: 50%;
+	}
+
+	.Event_table thead tr th:nth-child(4)
+	{
+		width: 5%;
+	}
+
+	.Event_table thead tr th:nth-child(5)
+	{
+		width: 5%;
+	}
+
+
+	.Event_table .list-tbody tr:hover
+	{
+		background-color: green;
+		color:#fff;
+	}
+	.glyphicon
+	{
+		font-size: 25px;
+		cursor: pointer;
+		margin-top: 10px;
+	}
+
+	.glyphicon-edit
+	{
+		color:orange;
+	}
+
+	.glyphicon-remove
+	{
+		color:red;
+	}	
+
+	.add_event_css
+	{
+		font-size: 25px;
+		margin-bottom: 40px;
+	}
+
+	.add_tbody input
+	{
+		background-color: #fff;
+	}
+
+	.top-date-div
+	{
+		width: 100%;
+		height: 45px;
+		border-bottom:8px solid green;
+	}
+
+	.Table_title
+	{
+		font-size: 20px;
+		font-weight: bold;
+		margin: 20px;
+	}
+
+	.glyphicon-plus
+	{
+		color:green;
+	}
+
+	.save_event_Btn
+	{
+		font-size: 20px;
+		width: 20%;
+		height: 40px;
+		line-height: 27px;
+		border:1px solid green;
+		color:green;
+	}
+
+	.choose_td
+	{
+		border: 2px solid green;
+	}
+
+
+</style>
+
+
+<!-- 事件列表弹框开始 -->
+<div id="event_modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg LG "  style="width: 90%;">
+
+		<div class="modal-content event_modal_content">	
+				
+			<div class="event_Box">
+
+				<div class="top-date-div">
+					<h3 >Date：<span class='TK_Date'></span> </h3>
+				</div>
+
+				<div class="Table_title">Event List</div>
+
+				<table  class="Event_table" border="1">
+					
+					<thead>
+						<tr>
+							<th>Time</th>
+							<th>Title</th>
+							<th>Details</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+
+					<tbody class="list-tbody">
+
+
+					</tbody>
+
+				
+					
+				</table>
+
+
+				<div class="Table_title">Add Event</div>
+
+				
+				<table  class="Event_table" border="1">
+					
+					<thead>
+						<tr>
+							<th>Time</th>
+							<th>Title</th>
+							<th>Details</th>
+							<th>Add</th>
+						</tr>
+					</thead>
+
+					<tbody class="add-tbody">
+
+						
+						<tr>
+
+
+							<td>
+								 <div class="">
+								    <div class="">
+								        <div class="">
+								            <input type='text' class="form-control" id="add_event_time"  placeholder="Click Select Time" />
+								        </div>
+								        <script type="text/javascript">
+								            $(function () {
+								                $('#add_event_time').datetimepicker({locale: 'en',format: 'LT'});
+								            });
+								        </script>
+								    </div>
+								</div>
+
+							</td>
+
+							<td>
+
+								<input type="text" class="form-control" id="event_title" placeholder="title..."  />
+
+							</td>
+							<td>
+
+								<input type="text" class="form-control" id="event_details"  placeholder="details..." />
+
+							</td>
+							<td>
+								<span class="glyphicon glyphicon-plus" id="add_event_Btn" ></span>
+							</td>
+							
+						</tr>
+						
+
+
+					</tbody>
+
+				
+					
+				</table>
+
+
+
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<!-- 事件列表弹框结束 -->
+
+
+<!-- 修改事件弹框开始 -->
+<div id="save_event_modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg LG "  style="width: 90%;">
+
+		<div class="modal-content event_modal_content">	
+				
+			<div class="event_Box">
+
+				<div class="top-date-div">
+					<h3 >Date：<span class='TK_Date'></span> </h3>
+				</div>
+
+				<div class="Table_title" style="margin-top: 40px;"  >Edit Event</div>
+
+				
+				<table  class="Event_table Edit_Table" border="1" style="margin-bottom: 30px;">
+					
+					<thead>
+						<tr>
+							<th>Time</th>
+							<th>Title</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+
+					<tbody class="edit-tbody">
+
+						<input type="hidden" id="edit_event_id"    />
+						
+						<tr>
+							<td>
+								<div class="">
+								    <div class="">
+								        <div class="">
+								            <input type='text' class="form-control" id="edit_event_time"  placeholder="Click Select Time"  />
+								        </div>
+								        <script type="text/javascript">
+								            $(function () {
+								                $('#edit_event_time').datetimepicker({locale: 'en',format: 'LT'});
+								            });
+								        </script>
+								    </div>
+								</div>
+							</td>
+							<td>
+
+								<input type="text" class="form-control" id="edit_event_title" placeholder="title..."  />
+
+							</td>
+							<td>
+
+								<input type="text" class="form-control" id="edit_event_details"  placeholder="details..." />
+
+							</td>
+							
+							
+						</tr>
+						
+
+
+					</tbody>
+
+				
+					
+				</table>
+
+
+				<div style="margin-bottom: 40px;">
+
+					<span class="btn btn-success save_event_Btn" id="save_event_Btn" >save</span>
+					
+				</div>
+
+
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<!-- 修改事件弹框结束 -->
+
+
+
+<script type="text/javascript">
+
+	//执行修改
+	$('#save_event_Btn').click(function(){
+
+		var edit_event_id         =   $('#edit_event_id').val();
+		var edit_event_title      =   $('#edit_event_title').val();
+		var edit_event_details    =   $('#edit_event_details').val();
+		var edit_event_time       =   $('#edit_event_time').val();
+
+		if(edit_event_time == '')
+		{
+			alert('Please choose the time first.');
+			return false;
+		}
+
+		if(edit_event_title.trim().length == 0)
+		{
+			alert('Title cannot be empty.');
+			return false;
+		}
+
+
+
+		// console.log('edit_event_id ==' + edit_event_id);
+		// console.log('edit_event_title ==' + edit_event_title);
+		// console.log('edit_event_details ==' + edit_event_details);
+
+		$.post(This_URL + 'do_save_event',
+			{
+				edit_event_id:edit_event_id,
+				edit_event_title:edit_event_title,
+				edit_event_details:edit_event_details,
+				edit_event_time:edit_event_time
+			},
+			function(p_Data){
+
+				if(p_Data == '[]' || p_Data == '')
+				{
+					return false;
+				}
+
+				var p_Arr   =   JSON.parse(p_Data);
+
+				if(p_Arr['code'] == 1)
+				{
+					alert(p_Arr['msg']);
+					
+					$('#save_event_modal').modal('hide');
+				}	
+				else
+				{
+					alert(p_Arr['msg']);
+					return false;
+				}
+
+		});	
+
+
+	});
+
+	//点击修改事件
+	function edit_event_func(obj)
+	{
+		var This_OBJ   =   $(obj);
+
+		var event_id  		 =   This_OBJ.attr('event_id');
+		var event_title      =   This_OBJ.attr('event_title');
+		var event_details    =   This_OBJ.attr('event_details');
+		var event_time       =   This_OBJ.attr('event_time');
+
+		$('#edit_event_time').val(event_time);
+
+		if(event_id == 'undefined')
+		{
+			alert('Please select the event to delete.');
+			return false;
+		}
+
+		// var confirm_edit  =   confirm('Confirm Edit?');
+
+		$('#edit_event_id').val(event_id);
+		$('#edit_event_title').val(event_title);
+		$('#edit_event_details').val(event_details);
+
+
+
+		$('#event_modal').modal('hide');
+		$('#save_event_modal').modal('show');
+	}
+
+
+	//删除事件
+	function delete_event_func(obj)
+	{
+		var This_OBJ   =   $(obj);
+
+		var event_id   =   This_OBJ.attr('event_id');
+
+		if(event_id == 'undefined')
+		{
+			alert('Please select the event to delete.');
+			return false;
+		}
+
+		var confirm_delete  =   confirm('Confirm Delete?');
+
+		if(confirm_delete   ==  true)
+		{
+			$.post(This_URL + 'do_delete_event',
+				{
+					event_id:event_id
+				},
+				function(p_Data){
+
+					if(p_Data == '[]' || p_Data == '')
+					{
+						return false;
+					}
+
+					var p_Arr   =   JSON.parse(p_Data);
+
+					if(p_Arr['code'] == 1)
+					{
+						This_OBJ.parents('tr').remove();
+					}	
+					else
+					{
+						alert(p_Arr['msg']);
+						return false;
+					}
+
+			});	
+
+
+		}
+	}
+
+
+
+	//执行添加事件
+	$('#add_event_Btn').click(function(){
+
+		var event_title      =  $('#event_title').val();
+		var event_details    =  $('#event_details').val();
+		var choose_date_ymd  =  $('#choose_date_ymd').val();
+		var user_id  		 =  $('#user_id').val();
+		var add_event_time   =  $('#add_event_time').val();
+
+
+		// console.log('event_title  === ' + event_title);
+		// console.log('event_details  === ' + event_details);
+		// console.log('choose_date_ymd  === ' + choose_date_ymd);
+
+		if(user_id == '')
+		{
+			alert('You have not logged in yet.');
+			return false;
+		}
+
+		if(add_event_time == '')
+		{
+			alert('Please choose the time first.');
+			return false;
+		}
+
+		if(choose_date_ymd == '')
+		{
+			alert('Please choose the date first.');
+			return false;
+		}
+
+		if(event_title.trim().length == 0)
+		{
+			alert('Title cannot be empty.');
+			return false;
+		}
+
+		$.post(This_URL + 'do_add_event',
+			{
+				event_title:event_title,
+				event_details:event_details,
+				choose_date_ymd:choose_date_ymd,
+				user_id:user_id,
+				add_event_time:add_event_time
+			},
+			function(p_Data){
+
+				if(p_Data == '[]' || p_Data == '')
+				{
+					return false;
+				}
+
+				var p_Arr   =   JSON.parse(p_Data);
+
+				if(p_Arr['code'] == 1)
+				{
+					// alert(p_Arr['msg']);
+
+					$('#event_title').val('');
+					$('#event_details').val('');
+
+					var event_id       =   p_Arr['event_info']['event_id'];
+					var event_title    =   p_Arr['event_info']['event_title'];
+					var event_details  =   p_Arr['event_info']['event_details'];
+					var event_time     =   p_Arr['event_info']['event_time'];
+
+					var new_event_HTML  =   `<tr>
+												<td>` + event_time + `</td>
+												<td>` + event_title + `</td>
+												<td>` + event_details + `</td>
+												<td>
+													<span 
+															onclick="edit_event_func(this)"
+															event_id="`+ event_id +`"  
+															event_title="`+ event_title +`"  
+															event_details="`+ event_details +`"  
+															event_time="`+ event_time +`"  
+															class="glyphicon glyphicon-edit"
+													></span>
+												</td>
+												<td>
+													<span 
+															onclick="delete_event_func(this)"
+															event_id="`+ event_id +`"  
+															class="glyphicon glyphicon-remove"
+													></span>
+												</td>
+											</tr>`;
+
+
+					$('.list-tbody').append(new_event_HTML);
+
+					console.log();
+
+				}	
+				else
+				{
+					alert(p_Arr['msg']);
+
+
+					return false;
+				}
+
+		});
+
+
+	});
+
+
+	// td 点击事件
+	function tdClickMyFunc(obj)	
+	{
+		var This_OBJ    =   $(obj);
+
+		$('td').removeClass(' choose_td');
+		This_OBJ.closest('td').addClass(' choose_td');
+
+
+		var ymNum    =    $('#month > p').html(); //年月
+		var dayNum   =    This_OBJ.attr('dayNum'); //日
+
+		var choose_date_ymd    =   ymNum + '-' + dayNum;
+
+
+		console.log(choose_date_ymd);
+
+		$('#choose_date_ymd').val(choose_date_ymd);
+		$('.TK_Date').html(choose_date_ymd);
+
+		$('.list-tbody').children().remove();
+
+
+		var user_id     =   $('#user_id').val();
+
+		if(user_id == '')
+		{
+			var confirm_login  =   confirm('You have not logged in yet. Login now?');
+
+			if(confirm_login == true)
+			{
+				$('#login_name').val('');
+				$('#login_pwd').val('');	
+
+				$('#login_modal').modal('show');
+			}		
+		}
+		else
+		{
+
+			// 发送ajax查询当天的事件
+			$.post(This_URL + 'select_event',
+				{
+					choose_date_ymd:choose_date_ymd,
+					user_id:user_id
+				},
+				function(p_Data){
+
+					if(p_Data == '[]' || p_Data == '')
+					{
+						return false;
+					}
+
+					console.log(p_Data);
+
+					var p_Arr   =   JSON.parse(p_Data);
+
+					for(var Im=0; Im<p_Arr.length; Im++)
+					{
+
+						var  event_id  		=   p_Arr[Im]['event_id'];
+						var  event_time     =   p_Arr[Im]['event_time'];
+						var  event_title    =   p_Arr[Im]['event_title'];
+						var  event_details  =   p_Arr[Im]['event_details'];
+
+						var new_event_HTML  =   `<tr>
+													<td>` + event_time    +`</td>
+													<td>` + event_title   + `</td>
+													<td>` + event_details + `</td>
+													<td>
+														<span 
+																onclick="edit_event_func(this)"
+																event_id="`+ event_id +`"  
+																event_time="`+ event_time +` "  
+																event_title="`+ event_title +`"  
+																event_details="`+ event_details +`"  
+																class="glyphicon glyphicon-edit"
+														></span>
+													</td>
+													<td>
+														<span 
+																onclick="delete_event_func(this)"
+																event_id="`+ event_id +`"  
+																class="glyphicon glyphicon-remove"
+														></span>
+													</td>
+
+
+												</tr>`;
+
+
+						$('.list-tbody').append(new_event_HTML);
+					}
+
+
+
+			});
+
+
+			$('#event_modal').modal('show');
+
+		}
+
+
+	}
+
+</script>
+

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>日历主页</title>
+
+	<link rel="stylesheet" href="__PUBLIC__/src/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="__PUBLIC__/Index/css/styel.css?v=4">
+
+    <style type="text/css">
+
+    	body
+    	{
+    		text-align: center;
+    		padding-top: 40px;
+    	}
+
+        .button
+        {
+            width: 120px;
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .today
+        {
+        	background-color: orange;
+        }
+
+		.top-user-info
+		{
+			font-size: 18px;
+			margin-bottom: 20px;
+		}	
+
+		.display_css
+		{
+			display: none;
+		}
+
+		#Logout_Btn
+		{
+			float: right;
+			padding-right: 20px;
+		}
+
+
+
+
+	.dateBody > tr > td 
+	{
+	    width: 14.28%;
+	    height: 60px;
+	    text-align: center;
+	    position: relative;
+	    padding: 2px;
+	    background-color: #fff;
+		cursor: pointer;
+	}
+
+	.dateBody > tr > td
+	{
+	    border:1px solid #eee;
+	}
+
+	.dateBody > td > p
+	{
+		height: 60px;
+		line-height: 60px;
+	}
+
+</style>
+
+</head>
+
+<body>
+
+	<div style="height: 30px;"></div>
+
+	<div id="Y-login-box" style="display: none;">
+		<div class="top-user-info">
+			<b>UserName:</b>   <span id="user-name-span"></span> 
+
+			<a href="javascript:void(0);" id="Logout_Btn"  >Logout > </a>
+
+		</div>
+
+		<!-- <div class="nav-box">
+			<ul>
+
+			  <li  id="user-list-menu"   >
+			  		<a href="javascript:void(0);">User List</a>
+			  </li>
+
+			  <li>
+			  		<a href="javascript:void(0);">Event List</a>
+			  </li>
+
+			  <li>
+			  		<a href="javascript:void(0);" id="Logout_Btn"  >Logout</a>
+			  </li>
+			</ul>
+		</div>
+ -->
+	</div>
+
+
+	<div  class="top-user-info" id="N-login-box"  style="display: none;">
+		<a href="javascript:void(0);" id="to_login">You have not logged in yet. Login now?</a>
+	</div>
+
+	
+
+	<hr style="border-top: 1px solid #aaa;" />
+
+	<br />
+
+
+	<div class="date">
+
+        <div class="dateHead" style="margin-bottom: 20px;">
+            <div id="pre" class="button btn btn-success" >
+                <span>pre</span>
+            </div>
+            <span id="month" class="month"></span>
+            <div id="next" class="button btn btn-success">
+                <span>next</span>
+            </div>
+
+        </div>
+
+        <div class="datebody">
+            <table cellspacing="3" cellpadding="3" class="home cal-table ">
+                <ul class="thead">
+                    <li>Sun</li>
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wed</li>
+                    <li>Thu</li>
+                    <li>Fri</li>
+                    <li>Sat</li>
+                </ul>
+                <tbody id="tbody" class="dateBody"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+	<input type="hidden" id="user_id"   value="{$_SESSION['user_info']['user_id']}"  />
+	<input type="hidden" id="user_name" value="{$_SESSION['user_info']['user_name']}"  />
+	<input type="hidden" id="user_role" value="{$_SESSION['user_info']['user_role']}"  />
+
+	<input type="hidden" id="choose_date_ymd"  value=""  />
+
+</body>
+
+<script src="__PUBLIC__/src/jquery/dist/jquery.min.js"></script>
+<script src="__PUBLIC__/Index/js/date.js?v=<?php echo time();?>"></script>
+
+<script src="__PUBLIC__/src/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	This_URL   =  '__URL__/';
+</script>
+
+<include file="login_modal" />
+<include file="event_modal" />
+
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		var user_name  =  $('#user_name').val();
+		var user_role  =  $('#user_role').val();
+
+		if(user_name == '')
+		{
+			$('#N-login-box').show();
+		}
+		else
+		{
+			$('#user-name-span').html(user_name);
+			$('#Y-login-box').show();
+		}
+
+		if(user_role == 1)
+		{
+			$('#user-list-menu').show();
+		}
+		else
+		{
+			$('#user-list-menu').hide();
+		}
+
+	});
+
+
+	$('#Logout_Btn').click(function(){
+
+		var confirm_logout  =   confirm('Confirm logout?');
+
+		if(confirm_logout == true)
+		{
+			$.post(This_URL + 'logout');
+
+			$('#N-login-box').show();
+			$('#Y-login-box').hide();	
+
+			$('#user_id').val('');
+			$('#user_name').val('');
+			$('#user_role').val('');
+
+		}
+		
+	});
+
+</script>
+
+
+</html>
+

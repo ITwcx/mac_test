@@ -1,0 +1,46 @@
+[ 2019-03-27T14:36:03+08:00 ] ::1 /calendar/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000549s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000265s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000286s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000172s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000203s ]
+NOTIC: [8] Undefined index: user_info /Applications/XAMPP/xamppfiles/htdocs/calendar/Application/Runtime/Cache/Home/2a94b8bda04ff446dcedd42276fc99ee.php 第 160 行.
+NOTIC: [8] Undefined index: user_info /Applications/XAMPP/xamppfiles/htdocs/calendar/Application/Runtime/Cache/Home/2a94b8bda04ff446dcedd42276fc99ee.php 第 161 行.
+NOTIC: [8] Undefined index: user_info /Applications/XAMPP/xamppfiles/htdocs/calendar/Application/Runtime/Cache/Home/2a94b8bda04ff446dcedd42276fc99ee.php 第 162 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007883s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007906s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000598s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000627s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000373s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000396s ]
+
+[ 2019-03-27T15:58:06+08:00 ] ::1 /calendar/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000005s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000167s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000212s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000228s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000146s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000165s ]
+NOTIC: [8] Undefined index: user_info /Applications/XAMPP/xamppfiles/htdocs/calendar/Application/Runtime/Cache/Home/2a94b8bda04ff446dcedd42276fc99ee.php 第 160 行.
+NOTIC: [8] Undefined index: user_info /Applications/XAMPP/xamppfiles/htdocs/calendar/Application/Runtime/Cache/Home/2a94b8bda04ff446dcedd42276fc99ee.php 第 161 行.
+NOTIC: [8] Undefined index: user_info /Applications/XAMPP/xamppfiles/htdocs/calendar/Application/Runtime/Cache/Home/2a94b8bda04ff446dcedd42276fc99ee.php 第 162 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007540s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007556s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000102s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000114s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000251s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000267s ]
+
